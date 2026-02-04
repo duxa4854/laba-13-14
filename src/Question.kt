@@ -16,23 +16,29 @@
 class Question<T>(
     val questionText: String,
     val answer: T,
-    val difficulty: String
+    val difficulty: Difficulty
 )
+enum class Difficulty{
+    EASY,
+    MEDIUM,
+    HARD
+}
 fun main() {
     val question1 = Question<String>(
         "ajkdash",
         "asjdasjd",
-        "jfdsjf"
+        Difficulty.MEDIUM
     )
     val question2 = Question<Boolean>(
         "ajkdash",
         false,
-        "jfdsjf"
+        Difficulty.EASY
     )
     val question3 = Question<Int>(
         "ajkdash",
         28,
-        "jfdsjf"
+        Difficulty.HARD
+
 
 
     )
