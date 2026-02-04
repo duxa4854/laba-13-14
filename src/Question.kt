@@ -29,15 +29,16 @@ interface ProgressPrintable {
 }
 class Quiz: ProgressPrintable {
     override val processText: String
-        get() =  "${answered} of ${total} answered"
+        get() = "${answered} of ${total} answered"
 
     override fun printProgressBar() {
-        repeat(Quiz.answered){print("//")}
-        repeat(Quiz.total - Quiz.answered){print("|")}
+        repeat(Quiz.answered) { print("//") }
+        repeat(Quiz.total - Quiz.answered) { print("|") }
         println()
         println(processText)
 
     }
+
     val question1 = Question<String>(
         "ajkdash",
         "asjdasjd",
@@ -53,13 +54,35 @@ class Quiz: ProgressPrintable {
         28,
         Difficulty.HARD
     )
+
     companion object StudentProgress {
-        var total:Int = 10
+        var total: Int = 10
         var answered: Int = 3
+    }
+
+    fun printQuiz() {
+        question1.let {
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+        question2.let {
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+        question3.let {
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+            println()
+        }
+
     }
 }
 
 fun main() {
-    Quiz().printProgressBar()
-
+    val quiz = Quiz().apply { printQuiz() }
 }
